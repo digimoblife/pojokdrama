@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        netflixRed: '#E50914',
+        netflixDark: '#141414',
       },
     },
   },
