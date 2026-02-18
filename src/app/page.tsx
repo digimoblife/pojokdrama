@@ -26,7 +26,7 @@ export default async function Home() {
       </div>
       
       <div className="relative z-20 space-y-8 -mt-10 md:-mt-20">
-        <SectionSlider title="Sedang Trending" items={trending.items} />
+        <SectionSlider title="Sedang Trending" items={trending.items} linkHref="/category/trending" />
         <SectionSlider title="Film Indonesia Terbaru" items={indoMovies.items} />
         <SectionSlider title="Drama Korea Pilihan" items={kdrama.items} />
         <SectionSlider title="Anime Populer" items={anime.items} />

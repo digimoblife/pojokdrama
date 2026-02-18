@@ -5,50 +5,56 @@ import { CATEGORIES } from '@/lib/categories';
 import { LayoutGrid } from 'lucide-react';
 
 const GRADIENTS = [
-  'from-pink-500 via-red-500 to-yellow-500',
-  'from-blue-400 via-indigo-500 to-purple-500',
-  'from-green-400 via-emerald-500 to-teal-500',
-  'from-orange-400 via-pink-500 to-purple-600',
-  'from-yellow-400 via-orange-500 to-red-500',
-  'from-cyan-400 via-blue-500 to-indigo-600',
-  'from-fuchsia-500 via-purple-600 to-pink-500',
+  // HAPUS warna pertama (Trending) karena akan kita skip
+  'from-blue-600 to-indigo-600',    // Indo
+  'from-emerald-600 to-teal-600',   // Drama Indo
+  'from-purple-600 to-fuchsia-600', // K-Drama
+  'from-orange-500 to-red-500',     // Short TV
+  'from-cyan-500 to-blue-500',      // Anime
+  'from-rose-600 to-pink-600',      // Canda Dewasa
+  'from-slate-600 to-slate-500',    // Western
+  'from-violet-600 to-purple-600',  // Indo Dub
 ];
 
 export default function CategoryRow() {
+  // FILTER: Ambil semua kategori KECUALI 'trending'
+  const displayCategories = CATEGORIES.filter(cat => cat.slug !== 'trending');
+
   return (
-    // UPDATED: Tambahkan 'mb-20' (80px) biar ada jarak jauh ke bawah
-    <section className="py-6 px-4 md:px-8 mb-20">
-      
-      <div className="flex items-center gap-2 mb-4 text-white">
-        <LayoutGrid className="w-5 h-5 text-red-600" />
-        <h2 className="text-lg md:text-xl font-bold">Browse by Category</h2>
+    <section className="py-8 px-4 md:px-8 mb-10">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 bg-gradient-to-br from-red-600/20 to-purple-600/20 rounded-lg border border-white/5">
+           <LayoutGrid className="w-5 h-5 text-red-500" />
+        </div>
+        <h2 className="text-xl md:text-2xl font-bold text-white tracking-wide">Jelajahi Kategori</h2>
       </div>
       
-      {/* LAYOUT LOGIC:
-         - Mobile: 'flex' (Scroll samping)
-         - Desktop (md): 'grid' (Bagi 6 kolom rata, fix tanpa scroll)
+      {/* GRID 4 KOLOM (Desktop)
+          - Mobile: 2 Kolom
+          - Tablet: 3 Kolom
+          - Desktop: 4 Kolom (Pas 2 Baris x 4 Kotak = 8 Item)
       */}
-      <div className="flex md:grid md:grid-cols-6 gap-3 overflow-x-auto md:overflow-visible pb-4 md:pb-0 scrollbar-hide snap-x">
-        {CATEGORIES.map((cat, idx) => {
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        {displayCategories.map((cat, idx) => {
           const gradient = GRADIENTS[idx % GRADIENTS.length];
           
           return (
             <Link 
               key={cat.slug} 
               href={`/category/${cat.slug}`}
-              // UPDATED: Mobile w-[130px] (kecil), Desktop w-auto (ikut grid)
-              className="snap-start group relative shrink-0 w-[130px] h-[70px] md:w-auto md:h-[100px] transition-transform duration-300 hover:scale-105"
+              className="relative group h-[80px] md:h-[100px] rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-red-500/10"
             >
-              {/* Layer Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-lg blur-[2px] opacity-70 group-hover:opacity-100 group-hover:blur-md transition-all duration-500`}></div>
-              
-              {/* Layer Content */}
-              <div className="absolute inset-[1.5px] bg-[#1a1a1a] rounded-[7px] flex flex-col items-center justify-center p-2 z-10 group-hover:bg-[#222] transition-colors">
-                {/* UPDATED: Hapus teks Explore, pertebal font nama kategori */}
-                <span className={`font-bold text-sm md:text-lg text-transparent bg-clip-text bg-gradient-to-br ${gradient} text-center leading-tight drop-shadow-sm`}>
+              <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-30 group-hover:opacity-90 transition-opacity duration-300`}></div>
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-300"></div>
+              <div className="absolute inset-0 border border-white/10 group-hover:border-white/40 rounded-xl transition-colors"></div>
+
+              <div className="absolute inset-0 flex items-center justify-center p-2 z-10">
+                <span className="font-bold text-sm md:text-lg text-gray-100 group-hover:text-white tracking-wide text-center drop-shadow-lg transition-transform group-hover:-translate-y-1">
                   {cat.name}
                 </span>
               </div>
+              
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-white rounded-t-full group-hover:w-12 transition-all duration-300 opacity-80"></div>
             </Link>
           );
         })}

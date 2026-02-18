@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 PojokDrama - AI-Powered Streaming Platform
 
-## Getting Started
+PojokDrama adalah platform streaming film dan drama modern yang dibangun dengan **Next.js 14**. Project ini mengutamakan kecepatan akses, antarmuka pengguna yang bersih (Netflix-inspired), serta navigasi kategori yang intuitif.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Fitur Utama
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **9 Kategori Dinamis**: Menampilkan konten mulai dari Film Indonesia, K-Drama, Anime, hingga Western TV.
+* **Sistem Pagonasi**: Mendukung navigasi multi-halaman untuk menjelajahi ribuan konten melalui API.
+* **Hybrid Video Player**: Pemutar video yang dioptimalkan untuk mengurangi gangguan iklan pop-up dari provider pihak ketiga.
+* **Desain Solid Glass**: Antarmuka kategori menggunakan efek *Glassmorphism* yang modern dan responsif di semua perangkat.
+* **SEO Optimized**: Dibangun dengan Server-Side Rendering (SSR) untuk indeks pencarian yang lebih baik.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+* **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **Icons**: [Lucide React](https://lucide.dev/)
+* **Deployment**: [Ubuntu VPS](https://ubuntu.com/) dengan [Nginx](https://www.nginx.com/)
+* **Process Manager**: [PM2](https://pm2.keymetrics.io/)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💻 Cara Menjalankan Secara Lokal
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone Repositori**
+   git clone [https://github.com/username/pojok-drama.git](https://github.com/username/pojok-drama.git)
+   cd pojok-drama
 
-## Deploy on Vercel
+2. Install Dependensi
+   npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Jalankan Mode Development
+   npm run dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   Buka http://localhost:3000 di browser Anda.
+
+4. Build untuk Production
+   npm run build
